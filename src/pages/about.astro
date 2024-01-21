@@ -1,0 +1,50 @@
+---
+// 添加变量
+const pageTitle = '关于我们'
+const identify ={
+	firstName:"沙拉",
+	country: "加拿大",
+	occupation: "技术仲搞人",
+	hobbies:[
+		"摄影",
+		"观鸟",
+		"棒球"
+	]
+}
+const skills = [
+	"HTML",
+	"css",
+	"javascript",
+	"React"
+]
+const happy = true
+const finished = false
+const goal = 3
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+        <a href="/">首页</a>
+        <a href="/about/">{pageTitle}</a>
+        <a href="/blog/">博客</a>
+		<a href="https://pointfigure.netlify.app/">点数图工具</a>
+		<h1>我是{pageTitle}</h1>
+		<ul>
+			<li>我的名字{identify.firstName}</li>
+			<li>我住在{identify.country}</li>
+			<li>我的职业是{identify.occupation}</li>
+			<li>我的爱好是{identify.hobbies}</li>
+		</ul>
+		<p>我的技能是</p>
+		<ul>
+			{skills.map((skill) =><li>{skill}</li>)}
+		</ul>
+	</body>
+</html>
