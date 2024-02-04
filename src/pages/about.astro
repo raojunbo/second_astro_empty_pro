@@ -1,25 +1,24 @@
 ---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+// 外部样式
+import "../styles/global.css";
 // 添加变量
-const pageTitle = '关于我们'
-const identify ={
-	firstName:"沙拉",
+const pageTitle = "关于我们";
+const identify = {
+	firstName: "沙拉",
 	country: "加拿大",
 	occupation: "技术仲搞人",
-	hobbies:[
-		"摄影",
-		"观鸟",
-		"棒球"
-	]
-}
-const skills = [
-	"HTML",
-	"css",
-	"javascript",
-	"React"
-]
-const happy = true
-const finished = false
-const goal = 3
+	hobbies: ["摄影", "观鸟", "棒球"],
+};
+const skills = ["HTML", "css", "javascript", "React"];
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "red";
+const fontWeigth = "bold";
 ---
 
 <html lang="en">
@@ -29,22 +28,39 @@ const goal = 3
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+
+		<!-- 内部样式-->
+		<style define:vars={{ skillColor, fontWeigth }}>
+			h1 {
+				color: purple;
+				font-size: 4rem;
+			}
+			.skill_style {
+				color: var(--skillColor);
+				font-weight: var(--fontWeigth);
+			}
+		</style>
 	</head>
 	<body>
-        <a href="/">首页</a>
-        <a href="/about/">{pageTitle}</a>
-        <a href="/blog/">博客</a>
-		<a href="https://pointfigure.netlify.app/">点数图工具</a>
+		<Header />
 		<h1>我是{pageTitle}</h1>
+
 		<ul>
 			<li>我的名字{identify.firstName}</li>
 			<li>我住在{identify.country}</li>
 			<li>我的职业是{identify.occupation}</li>
 			<li>我的爱好是{identify.hobbies}</li>
 		</ul>
+
 		<p>我的技能是</p>
 		<ul>
-			{skills.map((skill) =><li>{skill}</li>)}
+			{skills.map((skill) => <li class="skill_style">{skill}</li>)}
 		</ul>
+		{happy && <p>我非常乐意学习</p>}
+		{goal === 3 ? <p>我的目标是在三天内完成</p> : <p>我的目标是</p>}
+		<Footer />
+		<script>
+			import "../scripts/menu.js";
+		</script>
 	</body>
 </html>

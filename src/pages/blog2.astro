@@ -1,0 +1,22 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import "../styles/global.css";
+import BlogPost from "../components/BlogPost.astro";
+
+const allPost = await getCollection("posts");
+---
+
+<BaseLayout pageTitle="我生成的合集列表">
+  <ul>
+    {
+      allPost.map((post) => (
+        <BlogPost url={`/posts/${post.slug}/`} title={post.data.title} />
+      ))
+    }
+  </ul>
+</BaseLayout>

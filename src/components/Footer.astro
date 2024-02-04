@@ -1,0 +1,19 @@
+---
+import Social from './Social.astro'
+const platform = "github"
+const username = "withastro"
+---
+<footer>
+    <p> lear more about my projects on  <a href={`https://www.${platform}.com/${username}`}>{platform}</a>  </p>
+    <Social platform='twitter' username='abst1'/>
+    <Social platform='github' username='abst2'/>
+    <Social platform='youtube' username='abst3'/>
+</footer>
+<!-- 外部样式 -->
+<style>
+    footer {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+</style>
